@@ -1,34 +1,66 @@
 ```text
  - ..- .-. -... --- -.. ... .-.. - ..- .-. -... --- -.. ... .-..
-   ___________       ______
-     ___  ___/        __/ /           ________   _____  ___
-     __  /__  __ _,___ / /_   ____     __  __ \ / ___/ /  /
-  ____  // / / // ___// __ \ / __ \ ____  / / / \ \   /  /
-   __  // /_/ // /   / (_/ // (_/ /  __  /_/ /___\ \ /  /___
- _____/ \__,_//_/   /_,___/ \____/ _________//_____//______/
- 
- io.turbodsl
- 
+     ___________       ______
+       ___  ___/        __/ /           ________   _____  ___
+       __  /__  __ _,___ / /_   ____     __  __ \ / ___/ /  /
+    ____  // / / // ___// __ \ / __ \ ____  / / / \ \   /  /
+     __  // /_/ // /   / (_/ // (_/ /  __  /_/ /___\ \ /  /___
+   _____/ \__,_//_/   /_,___/ \____/ _________//_____//______/
+   io.turbodsl
  - ..- .-. -... --- -.. ... .-.. - ..- .-. -... --- -.. ... .-..
 ```
 > A _DSL-engine_ to **turbo-charge** your Kotlin development.
 
-> `TurboDSL` will not make your application faster, but will make your development easier,
-> and most importantly, write asynchronous code in a natural way.
+> `io.turbodsl` will not make your application faster, but will make your development easier,
+> and most importantly, write asynchronous code in a natural way using DSL expressions.
 
 ## Release
 - `io.turbodsl:io-turbodsl-core:1.0.0` : Initial release
 
-## Usage
+## Configuration
 ```
 // build.gradle.kts
+repositories {
+    maven()
+    // Also through github-packages
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/migueltt/io-turbodsl")
+        credentials {
+            username = <github-user>
+            password = <github-personal-access-token>
+        }
+    }
+}
 dependencies {
     implementation("io.turbodsl:io-turbodsl-core:<version>")
 }
 ```
 
-## Tutorials & HOW-TO
+## Tutorials, code-samples
 Check https://github.com/migueltt/io-turbodsl-tutorial
+```kotlin
+TurboScope.execute {
+    job { ... }
+    async(
+      job1 = asyncJob {...},
+      job2 = asyncJob {...},
+      // up to 10 jobs
+      job10 = asyncJob {...},
+    ) { ok, r1, r2, ..., r10 ->
+        // process results
+    }
+    async {
+        // Add any number of asynchronous jobs
+        asyncJob {...}
+        :
+    }
+}
+```
+## Concepts & Architecture
+Check https://www.turbodsl.io
+
+---
 
 ## Fundamentals
 - Everything is based on DSL expressions using [Kotlin approach](https://kotlinlang.org/docs/type-safe-builders.html)
