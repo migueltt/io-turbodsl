@@ -14,8 +14,13 @@
 > `io.turbodsl` will not make your application faster, but will make your development easier,
 > and most importantly, write asynchronous code in a natural way using DSL expressions.
 
-## Release
+## Releases
 - `io.turbodsl:io-turbodsl-core:1.0.0` : Initial release
+- `io.turbodsl:io-turbodsl-core:1.1.0` : Minor bug fixes
+- `io.turbodsl:io-turbodsl-core:1.2.0` : Breaking changes
+  - Rename `context` to `input`
+  - Rename `dispatcher` to `context` to follow Kotlin standards for `CoroutineContext`
+  - Retry-mechanisms extracted into `retry {...}` expression - refactored to its own `RetryScope`
 
 ## Configuration
 ```
@@ -69,7 +74,7 @@ Check https://www.turbodsl.io
 - The runtime overhead is minimal, comparing to pure Kotlin coroutines implementation.
 
 ## Features
-- Each scope has its own `context` (input parameter). If it is not explicitly specified, it inherits the parent's `context`.
+- Each scope has its own `input`. If it is not explicitly specified, it inherits the parent's `input`.
   - This allows to avoid referencing variables across scopes.
   - Provide immutability on how incoming data is processed. This is critical when having asynchronous code.
 - Asynchronous execution allows 3 different modes:
@@ -81,10 +86,9 @@ Check https://www.turbodsl.io
 - Specify retry mechanisms:
   - Number of retries
   - Delays between retries.
-  - Default value if last retry is unsuccessful.
+  - Delay factor to increase or decrease delay on subsequent retries
   - Retry strategy:
-    - `RetryMode.Never`: Never retry.
     - `RetryMode.OnTimeoutOnly`: Retry only when `timeout` limit has been reached.
     - `RetryMode.OnErrorOnly`: Retry only when an unexpected error was thrown.
     - `RetryMode.Always`: Retry always, for any error.
-
+    - `RetryMode.Never`: Never retry
