@@ -15,12 +15,18 @@
 > and most importantly, write asynchronous code in a natural way using DSL expressions.
 
 ## Releases
-- `io.turbodsl:io-turbodsl-core:1.0.0` : Initial release
-- `io.turbodsl:io-turbodsl-core:1.1.0` : Minor bug fixes
+- `io.turbodsl:io-turbodsl-core:1.2.1` : Some-breaking changes
+  - Default values for optional parameters - see [Kotlin nullable generics and default values](https://miguelt.medium.com/kotlin-nullable-generics-and-default-values-a9d95549eac5)
+    - Changed: `default` parameter has a default value `Undefined.Parameter`
+    - Added: `defaultFun` parameter to avoid creating instances when a default value is not needed
+  - Added: `TurboDslError` extends `Error` to separate scope-exception hierarchy.
+  - Renamed `ScopeImplementationException` into `ScopeImplementationError`, extending `TurboDslError`
 - `io.turbodsl:io-turbodsl-core:1.2.0` : Breaking changes
   - Rename `context` to `input`
   - Rename `dispatcher` to `context` to follow Kotlin standards for `CoroutineContext`
   - Retry-mechanisms extracted into `retry {...}` expression - refactored to its own `RetryScope`
+- `io.turbodsl:io-turbodsl-core:1.1.0` : Minor bug fixes
+- `io.turbodsl:io-turbodsl-core:1.0.0` : Initial release
 
 ## Configuration
 ```
