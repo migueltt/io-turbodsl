@@ -15,6 +15,11 @@
 > and most importantly, write asynchronous code in a natural way using DSL expressions.
 
 ## Releases
+- `io.turbodsl:io-turbodsl-core:1.2.2` : Additional functionality for collections
+  - Parallel processing on collections, adding functions for `map`, `filter`, `forEach`, `all`, `any`, `none`, and `contains`.
+  - Multiple modes for collection asynchronous execution: parallel, buckets, pool.
+  - All extension-functions for collections use prefix `async` to avoid naming mistakes with existing Kotlin functions.
+  - Parallel flag added for `AsyncScope` to trigger sequential execution for debug / development purposes.
 - `io.turbodsl:io-turbodsl-core:1.2.1` : Some-breaking changes
   - Default values for optional parameters - see [Kotlin nullable generics and default values](https://miguelt.medium.com/kotlin-nullable-generics-and-default-values-a9d95549eac5)
     - Changed: `default` parameter has a default value `Undefined.Parameter`
