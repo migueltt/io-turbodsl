@@ -15,6 +15,14 @@
 > and most importantly, write asynchronous code in a natural way using DSL expressions.
 
 ## Releases
+- `io.turbodsl:io-turbodsl-core:1.2.4` :
+  -  `Default` constants to represent `0`, `1`, `-1`.
+  -  Parameter `throwOnFailure` for `AsyncScope`s.
+  -  Additional functions in `AsyncResult`.
+- `io.turbodsl:io-turbodsl-core:1.2.3` :
+  -  `Default` mechanisms update.
+  -  Introduce `it` for collection scopes.
+  -  Include prefix `async` for all collection DSL expressions.
 - `io.turbodsl:io-turbodsl-core:1.2.2` : Additional functionality for collections
   - Parallel processing on collections, adding functions for `map`, `filter`, `forEach`, `all`, `any`, `none`, and `contains`.
   - Multiple modes for collection asynchronous execution: parallel, buckets, pool.
