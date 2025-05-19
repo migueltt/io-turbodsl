@@ -15,6 +15,11 @@
 > and most importantly, write asynchronous code in a natural way using DSL expressions.
 
 ## Releases
+- `io.turbodsl:io-turbodsl-core:1.2.5` :
+  - `Default` includes value evaluation
+  - Main `executeScope` in `RuntimeScope` uses scope `delay` and `default` implicitly.
+    - Only `RetryScope` sets them explicitly.
+  - Changes `ScopeExcepion` to `abstract` from `sealed` to allow subclassing from other modules.
 - `io.turbodsl:io-turbodsl-core:1.2.4` :
   -  `Default` constants to represent `0`, `1`, `-1`.
   -  Parameter `throwOnFailure` for `AsyncScope`s.
