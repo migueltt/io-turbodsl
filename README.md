@@ -15,6 +15,9 @@
 > and most importantly, write asynchronous code in a natural way using DSL expressions.
 
 ## Releases
+- `io.turbodsl:io-turbodsl-core:1.2.6` :
+  - Support for Kotlin Multiplatform
+  - Removes JVM dependencies
 - `io.turbodsl:io-turbodsl-core:1.2.5` :
   - `Default` includes value evaluation
   - Main `executeScope` in `RuntimeScope` uses scope `delay` and `default` implicitly.
